@@ -1,3 +1,3 @@
 ### R SCRIPTS 
-#### Used for Data Reading, Cleaning, Exploratory DAta analysis and Visualization
+#### Used for Data Reading, Cleaning, Exploratory Data analysis and Visualization
 
