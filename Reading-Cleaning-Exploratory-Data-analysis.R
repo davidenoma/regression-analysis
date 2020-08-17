@@ -83,3 +83,75 @@ newdata = na.omit(newdata
                   )
 head(newdata)
 write.csv(newdata, "biocap.csv")
+
+
+
+
+##Exploratory data analysis 
+data("iris")
+names(iris)
+summary(iris)
+##Data distribution of a quantitative variable 
+
+#Visualizing a variable 
+hist(iris$Sepal.Length)
+boxplot(iris$Sepal.Length,main="Summary of iris", xlab="Sepal Length")
+
+#Explore relationship between two variables
+#A scater plot
+plot(iris$Sepal.Length,iris$Sepal.Width,col=c(1,3))
+
+
+#Plotting a categorical or count variable 
+data("mtcars")
+names(mtcars)
+str(mtcars)
+counts = table(mtcars$gear)
+barplot(counts,main="Cars",xlab="Number of Gears")
+barplot(counts,main="Cars",xlab="Number of Gears",horiz = TRUE)
+barplot(counts,main="Cars",xlab="Number of Gears",horiz = TRUE,col = "red ")
+
+
+#Improving data visualization 
+library(ggplot2)
+
+#RElationshiop  between sepal length and width 
+qplot(Sepal.Length, Petal.Length, data = iris)
+#This is a better and robust visualization 
+qplot(Sepal.Length,Petal.Length, data=iris, color=Species,
+      xlab = "Sepal Length", ylab="Petal length",
+      main = "Sepal vs Petal Length in Iris data")
+
+qplot(Sepal.Length,Petal.Length, data=iris, geom = 'line', color=Species,
+      xlab = "Sepal Length", ylab="Petal length",
+      main = "Sepal vs Petal Length in Iris data")
+
+
+##GGPLOT PROPER 
+#ggplot(data = , aes(x= , y= , ...) )+ geom_xxx()
+
+
+ggplot(data = iris, aes(Sepal.Length,Sepal.Width)) + geom_point()
+
+#or
+
+ggplot(data = iris, aes(Sepal.Length,Sepal.Width,colour=Species)) + geom_point()
+ggplot(data = iris, aes(Sepal.Length,Sepal.Width,shape=Species)) + geom_point()
+
+
+#We can only specify colour and shapes on factors variables
+#Factors representn categorical variables
+#fucntion factor turns a number into a qualitative representation 
+
+#Using mtcars as a factor in visualization 
+
+ggplot(mtcars, aes(x=mpg, y = wt, colour = factor(gear)))  + geom_point()
+
+#histogram 
+
+ggplot(iris, aes(x=Sepal.Length)) + geom_histogram()
+       
+ggplot(iris, aes(x=Sepal.Length, fill=Species)) + geom_histogram()
+
+
+       
